@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { UiComponent} from '@angular-monorepo/ui'
 
 @Component({
-  imports: [RouterModule, UiComponent],
+  imports: [RouterModule],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
