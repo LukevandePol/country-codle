@@ -1,24 +1,28 @@
-# Base image
-FROM node:18 AS builder
+# Stage 1: Build the Angular app
+FROM node:18-alpine AS builder
 
-# Set the working directory
-WORKDIR /angular-monorepo
+# Set working directory inside container
+WORKDIR /app
 
 # Copy package files and install dependencies
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Copy the entire workspace
+# Copy the full project to the container
 COPY . .
 
-# Build the Angular application (modify according to your monorepo tool)
-RUN npx nx build country-codle
+# Build the Angular project
+RUN npx nx build country-codle --prod
 
-# Stage 2 - Serve the application using Nginx
+# Stage 2: Create a lightweight Nginx server to serve Angular app
 FROM nginx:alpine
-COPY --from=builder /angular-monorepo/dist/apps/country-codle/browser /usr/share/nginx/html
+
+# Copy built Angular files from builder stage
+COPY --from=builder /app/dist/apps/country-codle/browser /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose the default port
+# Expose port 80
 EXPOSE 80
+
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
