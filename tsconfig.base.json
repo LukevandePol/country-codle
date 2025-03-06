@@ -18,7 +18,8 @@
       "@angular-monorepo/country-codes": ["libs/country-codes/src/index.ts"],
       "@angular-monorepo/country-flags": ["libs/country-flags/src/index.ts"],
       "@angular-monorepo/home": ["libs/home/src/index.ts"],
-      "@angular-monorepo/ui": ["libs/shared/ui/src/index.ts"]
+      "@angular-monorepo/ui": ["libs/shared/ui/src/index.ts"],
+      "@angular-monorepo/ui-styles": ["ui-styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

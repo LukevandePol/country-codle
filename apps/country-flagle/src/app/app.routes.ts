@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { HomeComponent} from '@angular-monorepo/home';
+import { HomeComponent } from '@angular-monorepo/home';
 
 export const appRoutes: Route[] = [
     {
@@ -8,9 +8,9 @@ export const appRoutes: Route[] = [
         pathMatch: 'full'
     },
     {
-        path: 'country-codes',
+        path: 'country-flags',
         loadComponent : () => 
-            import('@angular-monorepo/country-codes').then((m) => m.CountryCodesComponent),
+            import('@angular-monorepo/country-flags').then((m) => m.CountryFlagsComponent),
     },
     { path: '**', redirectTo: '' }
 
